@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import * as actions from '../actions';
+import RequireAuth from '../hoc/RequireAuth';
 
 class CommentBox extends Component {
 
@@ -9,10 +10,11 @@ class CommentBox extends Component {
     comment: '',
   }
 
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    })
+    });
   };
 
   handleSubmit = (e) => {
@@ -42,9 +44,8 @@ class CommentBox extends Component {
         </div>
       </form>
 
-    )
+    );
   }
 }
 
-
-export default connect(null, actions)(CommentBox);
+export default connect(null, actions)(RequireAuth(CommentBox));

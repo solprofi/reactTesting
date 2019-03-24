@@ -5,6 +5,7 @@ export default (state = [], { type, payload }) => {
   case SAVE_COMMENT:
     return [...state, payload];
   case FETCH_COMMENTS: {
+    console.log(payload.data);
     const comments = payload.data.map(comment => comment.name).slice(0, 10);
     return [...state, ...comments];
   }
